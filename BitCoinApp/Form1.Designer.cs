@@ -38,6 +38,7 @@
             // 
             // CurrencyCombo
             // 
+            this.CurrencyCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CurrencyCombo.FormattingEnabled = true;
             this.CurrencyCombo.Items.AddRange(new object[] {
             "USD",
@@ -46,7 +47,6 @@
             this.CurrencyCombo.Name = "CurrencyCombo";
             this.CurrencyCombo.Size = new System.Drawing.Size(121, 21);
             this.CurrencyCombo.TabIndex = 0;
-            this.CurrencyCombo.Text = "Select Currency";
             // 
             // btnGetRates
             // 

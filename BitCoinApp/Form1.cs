@@ -10,6 +10,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Text;
 
 namespace BitCoinApp
 {
@@ -19,24 +20,47 @@ namespace BitCoinApp
         {
             InitializeComponent();
         }
-
         private void btnGetRates_Click(object sender, EventArgs e)
         {
+            float rate;
+            string code;
+            if (CurrencyCombo.SelectedItem == null)
+            {
+                MessageBox.Show("Select a currency.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(amountOfCoinBox.Text))
+            {
+                MessageBox.Show("Enter an amount.");
+                return;
+            }
             if (CurrencyCombo.SelectedItem.ToString() == "EUR")
             {
                 resultLabel.Visible = true;
                 ResultTextBox.Visible = true;
+                btnGetRates.Visible = true;
                 BitCoinRates bitcoin = GetRates();
                 float result = Int32.Parse(amountOfCoinBox.Text) * bitcoin.bpi.EUR.rate_float;
                 ResultTextBox.Text = $"{result.ToString()} {bitcoin.bpi.EUR.code}";
+                rate = bitcoin.bpi.EUR.rate_float;
+                code = bitcoin.bpi.EUR.code;
             }
             if (CurrencyCombo.SelectedItem.ToString() == "USD")
             {
                 resultLabel.Visible = true;
                 ResultTextBox.Visible = true;
+                btnGetRates.Visible = true;
                 BitCoinRates bitcoin = GetRates();
                 float result = Int32.Parse(amountOfCoinBox.Text) * bitcoin.bpi.USD.rate_float;
                 ResultTextBox.Text = $"{result.ToString()} {bitcoin.bpi.USD.code}";
+                rate = bitcoin.bpi.EUR.rate_float;
+                code = bitcoin.bpi.EUR.code;
+            }
+            else
+            {
+                MessageBox.Show("No letters");
+                return;
             }
         }
 
