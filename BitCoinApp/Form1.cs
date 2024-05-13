@@ -57,11 +57,6 @@ namespace BitCoinApp
                 rate = bitcoin.bpi.EUR.rate_float;
                 code = bitcoin.bpi.EUR.code;
             }
-            else
-            {
-                MessageBox.Show("No letters");
-                return;
-            }
         }
 
         public static BitCoinRates GetRates()
